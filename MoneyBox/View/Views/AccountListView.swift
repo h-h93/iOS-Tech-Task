@@ -32,6 +32,7 @@ class AccountListView: UIView {
         ])
     }
     
+    // create a compositional layout horizontally taking up full width of screen with padding
     func getCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let topPanel = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5)))
         topPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
