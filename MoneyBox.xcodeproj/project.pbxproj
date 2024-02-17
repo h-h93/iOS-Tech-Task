@@ -22,6 +22,8 @@
 		67442C252B80129500C40BED /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C242B80129500C40BED /* AccountDetailViewController.swift */; };
 		67442C272B80D82A00C40BED /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C262B80D82A00C40BED /* AccountListView.swift */; };
 		67442C292B80E5D500C40BED /* CustomAccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C282B80E5D500C40BED /* CustomAccountCollectionViewCell.swift */; };
+		67442C2D2B811F4700C40BED /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C2C2B811F4700C40BED /* Operations.swift */; };
+		67442C2F2B8121B900C40BED /* previous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C2E2B8121B900C40BED /* previous.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B228EA6C2880B30B00B35F16 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B228EA6A2880B30B00B35F16 /* Login.storyboard */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
@@ -56,6 +58,8 @@
 		67442C242B80129500C40BED /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
 		67442C262B80D82A00C40BED /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 		67442C282B80E5D500C40BED /* CustomAccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAccountCollectionViewCell.swift; sourceTree = "<group>"; };
+		67442C2C2B811F4700C40BED /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
+		67442C2E2B8121B900C40BED /* previous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previous.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B228EA6A2880B30B00B35F16 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		B24EED92288ED5740016C233 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 		67442C002B7D559E00C40BED /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				67442C2C2B811F4700C40BED /* Operations.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				B2CA46D62793508A0041B3A5 /* LaunchScreen.storyboard */,
 				B2CA46D92793508A0041B3A5 /* Info.plist */,
 				67442C062B7D587C00C40BED /* Extensions.swift */,
+				67442C2E2B8121B900C40BED /* previous.swift */,
 			);
 			path = MoneyBox;
 			sourceTree = "<group>";
@@ -321,9 +327,11 @@
 				67442C142B7E5FB900C40BED /* EmailTextField.swift in Sources */,
 				B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */,
 				67442C232B80127F00C40BED /* AccountDetailView.swift in Sources */,
+				67442C2F2B8121B900C40BED /* previous.swift in Sources */,
 				B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */,
 				67442C212B7FDEE200C40BED /* CustomPieChartView.swift in Sources */,
 				67442C122B7E5FAB00C40BED /* PasswordTextField.swift in Sources */,
+				67442C2D2B811F4700C40BED /* Operations.swift in Sources */,
 				67442C252B80129500C40BED /* AccountDetailViewController.swift in Sources */,
 				67442C072B7D587C00C40BED /* Extensions.swift in Sources */,
 				67442C162B7EB9B900C40BED /* AccountsDashboardViewController.swift in Sources */,

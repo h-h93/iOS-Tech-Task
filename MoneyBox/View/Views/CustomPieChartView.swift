@@ -16,7 +16,7 @@ class CustomPieChartView: UIView, ChartViewDelegate {
         pie.translatesAutoresizingMaskIntoConstraints = false
         pie.centerText = "Account"
         // animate our pie chart so it looks nicer and adds a bit of character to our app
-        pie.animate(xAxisDuration: 1.5, yAxisDuration: 2)
+        pie.animate(xAxisDuration: 3, yAxisDuration: 3)
         return pie
     }()
     var account = [Account]()
@@ -66,6 +66,7 @@ class CustomPieChartView: UIView, ChartViewDelegate {
             accountData.append(data)
             // create a colour for our data
             let colour = UIColor.random
+            print("color \(colour)")
             pieChartAccountColour.append(colour)
         }
         // set the pie chart data set by providing our data entries

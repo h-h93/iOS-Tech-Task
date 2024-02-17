@@ -8,7 +8,7 @@
 import UIKit
 import Networking
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController{
     // Design Login
     let loginView: LoginView = {
         let view = LoginView()
@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    let dataProvider = DataProvider()
+    let operation = Operations()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +40,10 @@ class LoginViewController: UIViewController {
     @objc func loginTapped() {
         let valid = loginView.verifyEmailPassword()
         if valid {
-            // set this back to loginUser() it is only for testing
             loginUser()
             loginView.loginButton.isEnabled = false
             loginView.loginButton.startActivitySpinner()
-            // disable login tap for 3 seconds as we try to log the user in
+            // disable login tap for 5 seconds as we try to log the user in
             // in the interim show them an animation spinner to let them know we are working in the background
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 self.loginView.loginButton.isEnabled = true
@@ -52,40 +51,21 @@ class LoginViewController: UIViewController {
             }
         }
     }
+
+    
     // log the user into their account
     func loginUser() {
         guard let email = loginView.emailTextField.text else { displayErrorToUser("Email not valid")
             return }
         guard let password = loginView.passwordTextField.text else { displayErrorToUser("Password not valid")
             return }
-        //email: "test+ios2@moneyboxapp.com", password: "P455word12"
-        let request = Networking.LoginRequest(email: email, password: password)
-        dataProvider.login(request: request) { result in
-            switch result {
-            case .success(let loginResponse):
-                // get and store bearer token
-                Networking.Authentication.token = loginResponse.session.bearerToken
+        
+        operation.loginUser(email: email, password: password) { success, error in
+            if success {
+                // display the next view
                 self.displayAccountView()
-            case .failure(let error):
-                // let's show the error to the user
-                self.displayErrorToUser(error.localizedDescription)
-            }
-        }
-    }
-    
-    // log the user into their account
-    func loginUserQuickly() {
-        //email: "test+ios2@moneyboxapp.com", password: "P455word12"
-        let request = Networking.LoginRequest(email: "test+ios2@moneyboxapp.com", password: "P455word12")
-        dataProvider.login(request: request) { result in
-            switch result {
-            case .success(let loginResponse):
-                // get and store bearer token
-                Networking.Authentication.token = loginResponse.session.bearerToken
-                self.displayAccountView()
-            case .failure(let error):
-                // let's show the error to the user
-                self.displayErrorToUser(error.localizedDescription)
+            } else {
+                self.displayErrorToUser(error?.localizedDescription ?? "Error unable to sign in, Please contact us for assistance")
             }
         }
     }
@@ -101,6 +81,7 @@ class LoginViewController: UIViewController {
     // navigate to users account view
     func displayAccountView() {
         let vc = AccountsDashboardViewController()
+        // let's get started on pulling in the account data so we can minimise any delays
         let rootNC = UINavigationController(rootViewController: vc)
         rootNC.modalPresentationStyle = .fullScreen
         rootNC.modalTransitionStyle = .flipHorizontal

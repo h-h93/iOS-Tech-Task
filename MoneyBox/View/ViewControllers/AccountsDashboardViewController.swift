@@ -8,7 +8,7 @@
 import UIKit
 import Networking
 
-class AccountsDashboardViewController: UIViewController, UIScrollViewDelegate {
+class AccountsDashboardViewController: UIViewController {
     let accountDashboardView: AccountDashboardView = {
         let view = AccountDashboardView()
         view.backgroundColor = .clear
@@ -19,13 +19,16 @@ class AccountsDashboardViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        DispatchQueue.main.async {
+            self.accountDashboardView.getData()
+        }
         setupView()
     }
     
     func setupView() {
-        accountDashboardView.delegate = self
-        accountDashboardView.contentSize = CGSize(width: view.frame.size.width, height: 600)
         view.addSubview(accountDashboardView)
+        // assign our view controller to delegate so we can navigate to the next view
+        accountDashboardView.collectionView.delegate = self
         setConstraints()
     }
     
@@ -34,8 +37,13 @@ class AccountsDashboardViewController: UIViewController, UIScrollViewDelegate {
             accountDashboardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             accountDashboardView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             accountDashboardView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            accountDashboardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)
+            accountDashboardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    func showAccountDetailViewController(account: Account, product: ProductResponse) {
+        let vc = AccountDetailViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // disable scrolling horizontally

@@ -9,7 +9,7 @@ import UIKit
 import Networking
 import DGCharts
 
-class AccountDashboardView: UIScrollView, UICollectionViewDelegate, UICollectionViewDataSource {
+class AccountDashboardView: UIScrollView {
     var pieChart: CustomPieChartView = {
         let pie = CustomPieChartView()
         pie.translatesAutoresizingMaskIntoConstraints = false
@@ -22,21 +22,23 @@ class AccountDashboardView: UIScrollView, UICollectionViewDelegate, UICollection
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
-
-    var dataProvider = DataProvider()
     
-    var label = UILabel()
+    let operations = Operations()
+    
+    var accountRespone: AccountResponse!
+    var accounts = [Account]()
+    var product = [ProductResponse]()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         // we'll stop showing the scroll indicator so that it doesn't cause confusion as we have a collection view in a scroll view
         self.showsHorizontalScrollIndicator = false
         self.showsVerticalScrollIndicator = false
-        getAccountData()
+        
         setupPieView()
         setupCollectionView()
     }
-    
+    // setup and apply constraints to pie chart view
     func setupPieView() {
         self.addSubview(pieChart)
         NSLayoutConstraint.activate([
@@ -48,10 +50,8 @@ class AccountDashboardView: UIScrollView, UICollectionViewDelegate, UICollection
             pieChart.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
     }
-    
+    // setup and apply constraints to collection view
     func setupCollectionView() {
-        collectionView.collectionView.delegate = self
-        collectionView.collectionView.dataSource = self
         self.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: pieChart.bottomAnchor, constant: 20),
@@ -64,21 +64,32 @@ class AccountDashboardView: UIScrollView, UICollectionViewDelegate, UICollection
     }
     
     // grab the users account data to display
-    func getAccountData() {
-        dataProvider.fetchProducts { response in
-            switch response {
-            case .success(let success):
-                // push to main to create seamless experience 
+    func getData() {
+        operations.getAccountData { response, error in
+            if error == nil {
+                self.accountRespone = response
+                self.accounts = response!.accounts!
+                self.product = response!.productResponses!
                 DispatchQueue.main.async {
-                    // feed accounts into pie chart
-                    self.pieChart.account = success.accounts!
-                    self.pieChart.accountTotal = success.totalPlanValue ?? 0
-                    self.pieChart.setupPieChart()
+                    self.updateCollectionView()
+                    self.drawPieChart()
                 }
-            case .failure(let error):
-                print("failure \(error.localizedDescription)")
             }
         }
+    }
+    
+    func drawPieChart() {
+        // feed accounts into pie chart
+        self.pieChart.account = accounts
+        // the user may not have contributed money to the account so we will apply nil coalescing
+        self.pieChart.accountTotal = accountRespone.totalPlanValue ?? 0
+        self.pieChart.setupPieChart()
+    }
+    
+    func updateCollectionView() {
+        self.collectionView.account = accounts
+        self.collectionView.productResponse = product
+        self.collectionView.collectionView.reloadData()
     }
     
     required init?(coder: NSCoder) {
@@ -87,16 +98,6 @@ class AccountDashboardView: UIScrollView, UICollectionViewDelegate, UICollection
     
     func updateChartData() {
         
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        cell.backgroundColor = .blue
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
     }
     
 }

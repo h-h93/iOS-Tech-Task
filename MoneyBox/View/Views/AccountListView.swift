@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import Networking
 
-class AccountListView: UIView {
+class AccountListView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     var collectionView: UICollectionView!
+    
+    var account = [Account]()
+    var productResponse = [ProductResponse]()
+    
+    // create a delegate so that we can navigate to the next view when user clicks on the account they wish to view within the collection view
+    weak var delegate: AccountsDashboardViewController!
 
     override init(frame: CGRect) {
-        super.init(frame: .zero)
+        super.init(frame: frame)
         setupCollectionVew()
     }
     
@@ -21,7 +28,9 @@ class AccountListView: UIView {
     
     func setupCollectionVew() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: getCompositionalLayout())
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(CustomAccountCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -51,5 +60,23 @@ class AccountListView: UIView {
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomAccountCollectionViewCell
+        let account = account[indexPath.item]
+        let product = productResponse[indexPath.item]
+        cell.accountNameLabel.text = "\(account.name!)"
+        cell.planValueLabel.text = "Plan value: £\(product.planValue!)"
+        cell.moneyBoxAmountLabel.text = "Moneybox: £\(product.moneybox!)"
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return account.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate.showAccountDetailViewController(account: account[indexPath.item], product: productResponse[indexPath.item])
     }
 }
