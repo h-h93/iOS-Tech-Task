@@ -18,7 +18,8 @@ public struct LoginResponse: Decodable {
     }
     
     public struct Session: Decodable {
-        let bearerToken: String
+        // changed this from let bearerToken: String to public let as it was not accessible it is still read only but we can now access this token
+        public let bearerToken: String
         
         enum CodingKeys: String, CodingKey {
             case bearerToken = "BearerToken"

@@ -209,12 +209,22 @@ extension String {
         // least one uppercase,
         // least one digit
         // least one lowercase
-        // least one symbol
+        // least one symbol -- removed for money box as test user doesn't have special character in pword
         //  min 8 characters total
         let password = self.trimmingCharacters(in: CharacterSet.whitespaces)
-        let passwordRegx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&<>*~:`-]).{8,}$"
+        let passwordRegx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$"
         let passwordCheck = NSPredicate(format: "SELF MATCHES %@",passwordRegx)
         return passwordCheck.evaluate(with: password)
+    }
+    
+    func colorString(text: String?, coloredText: String?, color: UIColor? = .red) -> String {
+        
+        let attributedString = NSMutableAttributedString(string: text!)
+        let range = (text! as NSString).range(of: coloredText!)
+        attributedString.setAttributes([NSAttributedString.Key.foregroundColor: color!],
+                                       range: range)
+        let text = attributedString.string
+        return text
     }
 }
 
@@ -337,10 +347,4 @@ extension UILabel {
                                        range: range)
         self.attributedText = attributedString
     }
-}
-
-extension UIViewController {
-    
-
-    
 }

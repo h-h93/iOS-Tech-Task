@@ -8,32 +8,18 @@
 import UIKit
 
 class LoginView: UIView, UITextFieldDelegate {
-    
-    var emailTextField: UITextField = {
-        let textField = UITextField()
+    //-------------------------------- start declare UI components ---------------------------------//
+    var emailTextField: EmailTextField = {
+        let textField = EmailTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.tag = 1
-        textField.addBottomBorder()
-        textField.backgroundColor = .white
-        textField.textColor = .black
-        textField.autocorrectionType = .no
-        textField.keyboardType = .emailAddress
-        textField.autocapitalizationType = .none
-        textField.attributedPlaceholder = NSAttributedString(string: "Enter email address", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         return textField
     }()
     
-    var passwordTextField: UITextField = {
-        let textField = UITextField()
+    var passwordTextField: PasswordTextField = {
+        let textField = PasswordTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.tag = 2
-        textField.addBottomBorder()
-        textField.backgroundColor = .white
-        textField.textColor = .black
-        textField.autocorrectionType = .no
-        textField.isSecureTextEntry = true
-        textField.autocapitalizationType = .none
-        textField.attributedPlaceholder = NSAttributedString(string: "Enter password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         return textField
     }()
     
@@ -70,7 +56,7 @@ class LoginView: UIView, UITextFieldDelegate {
     
     let loginTitle: UILabel = {
         let label = UILabel()
-        label.text = "Login"
+        label.text = "Sign in to Moneybox"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "AvenirNext-Medium", size: 30)
         label.textColor = .black
@@ -90,6 +76,9 @@ class LoginView: UIView, UITextFieldDelegate {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    //-------------------------------- end declare UI components ---------------------------------//
+    
+    weak var delegate: LoginViewController!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -102,6 +91,7 @@ class LoginView: UIView, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // add ui components to view and create and implement gesture recognisers
     func setupView() {
         self.addSubview(loginTitle)
         self.addSubview(emailLabel)
@@ -110,6 +100,7 @@ class LoginView: UIView, UITextFieldDelegate {
         self.addSubview(passwordTextField)
         self.addSubview(resetPasswordLabel)
         self.addSubview(loginButton)
+        // use our custom extension to return a string that colours in a specific word
         signUpLabel.colorString(text: "Don't have an account? Sign up", coloredText: "Sign up")
         self.addSubview(signUpLabel)
         
@@ -125,14 +116,15 @@ class LoginView: UIView, UITextFieldDelegate {
         passwordTextField.delegate = self
     }
     
+    // set our constraints for our subviews
     func setViewconstraints() {
         NSLayoutConstraint.activate([
-            loginTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+            loginTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
             loginTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             loginTitle.heightAnchor.constraint(equalToConstant: 50),
-            loginTitle.widthAnchor.constraint(equalToConstant: 200),
+            loginTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            emailLabel.topAnchor.constraint(equalTo: loginTitle.bottomAnchor, constant: 40),
+            emailLabel.topAnchor.constraint(equalTo: loginTitle.bottomAnchor, constant: 50),
             emailLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             emailLabel.heightAnchor.constraint(equalToConstant: 20),
             emailLabel.widthAnchor.constraint(equalToConstant: 50),
@@ -155,7 +147,7 @@ class LoginView: UIView, UITextFieldDelegate {
             passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             
             resetPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor),
-            resetPasswordLabel.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -150),
+            resetPasswordLabel.widthAnchor.constraint(equalToConstant: 140),
             resetPasswordLabel.heightAnchor.constraint(equalToConstant: 50),
             resetPasswordLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
@@ -165,25 +157,39 @@ class LoginView: UIView, UITextFieldDelegate {
             loginButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
             loginButton.heightAnchor.constraint(lessThanOrEqualToConstant: 80),
             
-            //signUpLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
             signUpLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             signUpLabel.heightAnchor.constraint(equalToConstant: 25),
             signUpLabel.widthAnchor.constraint(equalToConstant: 250),
             signUpLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
     }
-
+    
+    // reset function
     @objc func resetTapped() {
         guard let email = emailTextField.text else { return }
         // code to reset password
     }
     
+    // hide textfield when done button is tapped
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    
-    
+    func verifyEmailPassword() -> Bool {
+        guard let email = emailTextField.text else { return false }
+        guard let password = passwordTextField.text else { return false }
+        if email.isValidEmail(email) && password.isValidPassword(password) {
+            return true
+        } else if !email.isValidEmail(email) {
+            delegate.displayErrorToUser("Email not valid")
+            return false
+        } else if !password.isValidPassword(password) {
+            delegate.displayErrorToUser("Password not valid, Password must be 8 characters long and must contain at least one Capital letter and a number")
+            return false
+        } else {
+            return false
+        }
+    }
 
 }
