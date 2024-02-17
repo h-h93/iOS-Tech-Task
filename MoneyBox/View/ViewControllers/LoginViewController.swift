@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
         let valid = loginView.verifyEmailPassword()
         if valid {
             // set this back to loginUser() it is only for testing
-            loginUserQuickly()
+            loginUser()
             loginView.loginButton.isEnabled = false
             loginView.loginButton.startActivitySpinner()
             // disable login tap for 3 seconds as we try to log the user in
