@@ -16,7 +16,7 @@ class CustomPieChartView: UIView, ChartViewDelegate {
         pie.translatesAutoresizingMaskIntoConstraints = false
         pie.centerText = "Account"
         // animate our pie chart so it looks nicer and adds a bit of character to our app
-        pie.animate(xAxisDuration: 3, yAxisDuration: 3)
+        pie.animate(xAxisDuration: 5, yAxisDuration: 5)
         return pie
     }()
     var account = [Account]()
@@ -58,7 +58,7 @@ class CustomPieChartView: UIView, ChartViewDelegate {
         // grab the users account value so we can populate our pie chart
         for value in account {
             // create data entries for pie chart
-            var data = PieChartDataEntry()
+            let data = PieChartDataEntry()
             // if the investment account has no funds then set to zero
             data.value = calculatePercentage(value: value.wrapper?.totalValue ?? 0)
             // give the label a name
@@ -66,7 +66,6 @@ class CustomPieChartView: UIView, ChartViewDelegate {
             accountData.append(data)
             // create a colour for our data
             let colour = UIColor.random
-            print("color \(colour)")
             pieChartAccountColour.append(colour)
         }
         // set the pie chart data set by providing our data entries

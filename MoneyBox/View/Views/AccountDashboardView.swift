@@ -17,8 +17,8 @@ class AccountDashboardView: UIScrollView {
         return pie
     }()
     
-    let collectionView: AccountListView = {
-        let collection = AccountListView()
+    let collectionView: CollectionViewAccountListView = {
+        let collection = CollectionViewAccountListView()
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
@@ -70,10 +70,8 @@ class AccountDashboardView: UIScrollView {
                 self.accountRespone = response
                 self.accounts = response!.accounts!
                 self.product = response!.productResponses!
-                DispatchQueue.main.async {
-                    self.updateCollectionView()
-                    self.drawPieChart()
-                }
+                self.updateCollectionView()
+                self.drawPieChart()
             }
         }
     }
@@ -87,6 +85,7 @@ class AccountDashboardView: UIScrollView {
     }
     
     func updateCollectionView() {
+        // feed accounts to collection view
         self.collectionView.account = accounts
         self.collectionView.productResponse = product
         self.collectionView.collectionView.reloadData()
@@ -95,9 +94,4 @@ class AccountDashboardView: UIScrollView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func updateChartData() {
-        
-    }
-    
 }

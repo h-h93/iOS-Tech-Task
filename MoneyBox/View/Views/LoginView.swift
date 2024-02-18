@@ -101,7 +101,7 @@ class LoginView: UIView, UITextFieldDelegate {
         self.addSubview(resetPasswordLabel)
         self.addSubview(loginButton)
         // use our custom extension to return a string that colours in a specific word
-        signUpLabel.colorString(text: "Don't have an account? Sign up", coloredText: "Sign up")
+        signUpLabel.colorString(text: "Don't have an account? Sign up", coloredText: "Sign up", color: .blue)
         self.addSubview(signUpLabel)
         
         // reset password gesture

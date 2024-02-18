@@ -8,7 +8,7 @@
 import UIKit
 import Networking
 
-class AccountListView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     var collectionView: UICollectionView!
     
     var account = [Account]()

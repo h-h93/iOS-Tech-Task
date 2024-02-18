@@ -43,6 +43,8 @@ class AccountsDashboardViewController: UIViewController {
     
     func showAccountDetailViewController(account: Account, product: ProductResponse) {
         let vc = AccountDetailViewController()
+        vc.account = account
+        vc.product = product
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

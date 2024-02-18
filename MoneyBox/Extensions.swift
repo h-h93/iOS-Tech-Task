@@ -348,3 +348,29 @@ extension UILabel {
         self.attributedText = attributedString
     }
 }
+
+extension Date {
+    func dateFromString(_ string: String) -> Date? {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withFullDate]
+        if #available(iOS 15, *) {
+            let date = dateFormatter.date(from: string) ?? Date.now
+            return date
+        } else {
+            // Fallback on earlier versions
+            let date = Date()
+            let calendar = Calendar.current
+            let hour = calendar.component(.hour, from: date)
+            let minutes = calendar.component(.minute, from: date)
+            return date
+        }
+    }
+    
+    func getCurrentDatePreIos15() -> Date {
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        return date
+    }
+}
