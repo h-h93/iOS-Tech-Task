@@ -20,12 +20,13 @@ class LoginButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        self.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 20)!
         self.setTitle("Login", for: .normal)
         self.setTitle("", for: .disabled)
         self.setTitleColor(.white, for: .normal)
         self.layer.cornerRadius = 4
-        self.backgroundColor = .red
+        let colour = UIColor(red: 42/255, green: 216/255, blue: 202/255, alpha: 1)
+        self.backgroundColor = colour
         setup()
     }
     

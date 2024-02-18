@@ -34,20 +34,20 @@ class LoginViewController: UIViewController{
             loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        loginView.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
+        loginView.scrollView.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
     }
     
     @objc func loginTapped() {
         let valid = loginView.verifyEmailPassword()
         if valid {
             loginUser()
-            loginView.loginButton.isEnabled = false
-            loginView.loginButton.startActivitySpinner()
+            loginView.scrollView.loginButton.isEnabled = false
+            loginView.scrollView.loginButton.startActivitySpinner()
             // disable login tap for 5 seconds as we try to log the user in
             // in the interim show them an animation spinner to let them know we are working in the background
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                self.loginView.loginButton.isEnabled = true
-                self.loginView.loginButton.stopActivitySpinner()
+                self.loginView.scrollView.loginButton.isEnabled = true
+                self.loginView.scrollView.loginButton.stopActivitySpinner()
             }
         }
     }
@@ -55,9 +55,9 @@ class LoginViewController: UIViewController{
     
     // log the user into their account
     func loginUser() {
-        guard let email = loginView.emailTextField.text else { displayErrorToUser("Email not valid")
+        guard let email = loginView.scrollView.emailTextField.text else { displayErrorToUser("Email not valid")
             return }
-        guard let password = loginView.passwordTextField.text else { displayErrorToUser("Password not valid")
+        guard let password = loginView.scrollView.passwordTextField.text else { displayErrorToUser("Password not valid")
             return }
         
         operation.loginUser(email: email, password: password) { success, error in

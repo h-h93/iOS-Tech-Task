@@ -8,11 +8,11 @@
 import UIKit
 import Networking
 
-class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     var collectionView: UICollectionView!
     
-    var account = [Account]()
-    var productResponse = [ProductResponse]()
+    var account: Account!
+    var product: ProductResponse!
     
     // create a delegate so that we can navigate to the next view when user clicks on the account they wish to view within the collection view
     weak var delegate: AccountsDashboardViewController!
@@ -30,7 +30,7 @@ class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollect
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: getCompositionalLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(CustomAccountCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(CustomAccountDetailCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -43,15 +43,10 @@ class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollect
     
     // create a compositional layout horizontally taking up full width of screen with padding
     func getCompositionalLayout() -> UICollectionViewCompositionalLayout {
-        let topPanel = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5)))
+        let topPanel = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         topPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
-        let bottomPanel = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5)))
-        bottomPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        
-        let topAndBottom = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [topPanel, bottomPanel])
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [topAndBottom])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [topPanel])
         
         //--------- Container Group ---------//
         let containerGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [group])
@@ -63,20 +58,18 @@ class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomAccountCollectionViewCell
-        let account = account[indexPath.item]
-        let product = productResponse[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CustomAccountDetailCollectionViewCell
         cell.accountNameLabel.text = "\(account.name!)"
-        cell.planValueLabel.text = "Plan value: £\(product.planValue!)"
+        cell.planValueLabel.text = "Plan Value: £\(product.planValue!)"
         cell.moneyBoxAmountLabel.text = "Moneybox: £\(product.moneybox!)"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return account.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate.showAccountDetailViewController(account: account[indexPath.item], product: productResponse[indexPath.item])
+        
     }
 }

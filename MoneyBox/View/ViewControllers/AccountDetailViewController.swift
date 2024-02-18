@@ -8,7 +8,7 @@
 import UIKit
 import Networking
 
-class AccountDetailViewController: UIViewController {
+class AccountDetailViewController: UIViewController, UIScrollViewDelegate {
     var account: Account!
     var product: ProductResponse!
     
@@ -21,9 +21,12 @@ class AccountDetailViewController: UIViewController {
     func setupAccountView() {
         let accountView = AccountDetailView()
         accountView.translatesAutoresizingMaskIntoConstraints = false
-        accountView.account = self.account
-        accountView.product = self.product
-        accountView.setupchartData()
+        accountView.collectionView.account = self.account
+        accountView.collectionView.product = self.product
+        accountView.lineChartView.account = self.account
+        accountView.lineChartView.product = self.product
+        accountView.lineChartView.setupchartData()
+        accountView.delegate = self
         view.addSubview(accountView)
         NSLayoutConstraint.activate([
             accountView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -31,6 +34,13 @@ class AccountDetailViewController: UIViewController {
             accountView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             accountView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    // disable scrolling horizontally
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
     }
 
 }

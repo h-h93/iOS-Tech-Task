@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		67442C052B7D584900C40BED /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C042B7D584900C40BED /* LoginView.swift */; };
 		67442C072B7D587C00C40BED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C062B7D587C00C40BED /* Extensions.swift */; };
 		67442C092B7D58A800C40BED /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C082B7D58A800C40BED /* LoginButton.swift */; };
-		67442C0E2B7D737100C40BED /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 67442C0D2B7D737100C40BED /* DGCharts */; };
-		67442C102B7D737100C40BED /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 67442C0F2B7D737100C40BED /* DGChartsDynamic */; };
 		67442C122B7E5FAB00C40BED /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C112B7E5FAB00C40BED /* PasswordTextField.swift */; };
 		67442C142B7E5FB900C40BED /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C132B7E5FB900C40BED /* EmailTextField.swift */; };
 		67442C162B7EB9B900C40BED /* AccountsDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C152B7EB9B900C40BED /* AccountsDashboardViewController.swift */; };
-		67442C192B7EC0EF00C40BED /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 67442C182B7EC0EF00C40BED /* Lottie */; };
 		67442C1D2B7F9CE200C40BED /* AccountDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C1C2B7F9CE200C40BED /* AccountDashboardView.swift */; };
 		67442C212B7FDEE200C40BED /* CustomPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C202B7FDEE200C40BED /* CustomPieChartView.swift */; };
 		67442C232B80127F00C40BED /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C222B80127F00C40BED /* AccountDetailView.swift */; };
@@ -25,6 +21,12 @@
 		67442C2D2B811F4700C40BED /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C2C2B811F4700C40BED /* Operations.swift */; };
 		67442C2F2B8121B900C40BED /* previous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C2E2B8121B900C40BED /* previous.swift */; };
 		67442C312B81587300C40BED /* GrowthChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C302B81587300C40BED /* GrowthChartView.swift */; };
+		675124C52B825AC800388576 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 675124C42B825AC800388576 /* DGCharts */; };
+		675124C72B825AC800388576 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 675124C62B825AC800388576 /* DGChartsDynamic */; };
+		675124C92B82931200388576 /* LoginScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675124C82B82931200388576 /* LoginScrollView.swift */; };
+		675125152B82ABAB00388576 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125142B82ABAB00388576 /* LoginView.swift */; };
+		675125172B82BC5C00388576 /* AccountDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125162B82BC5C00388576 /* AccountDetailCollectionView.swift */; };
+		675125192B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125182B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B228EA6C2880B30B00B35F16 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B228EA6A2880B30B00B35F16 /* Login.storyboard */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
@@ -46,8 +48,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		67442C3E2B82575300C40BED /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		67442C042B7D584900C40BED /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		67442C062B7D587C00C40BED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		67442C082B7D58A800C40BED /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		67442C112B7E5FAB00C40BED /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
@@ -62,6 +76,10 @@
 		67442C2C2B811F4700C40BED /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 		67442C2E2B8121B900C40BED /* previous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previous.swift; sourceTree = "<group>"; };
 		67442C302B81587300C40BED /* GrowthChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthChartView.swift; sourceTree = "<group>"; };
+		675124C82B82931200388576 /* LoginScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScrollView.swift; sourceTree = "<group>"; };
+		675125142B82ABAB00388576 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		675125162B82BC5C00388576 /* AccountDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailCollectionView.swift; sourceTree = "<group>"; };
+		675125182B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAccountDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B228EA6A2880B30B00B35F16 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		B24EED92288ED5740016C233 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
@@ -81,10 +99,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67442C0E2B7D737100C40BED /* DGCharts in Frameworks */,
-				67442C102B7D737100C40BED /* DGChartsDynamic in Frameworks */,
+				675124C72B825AC800388576 /* DGChartsDynamic in Frameworks */,
 				B26EF47828881E7F003BFDF2 /* Networking in Frameworks */,
-				67442C192B7EC0EF00C40BED /* Lottie in Frameworks */,
+				675124C52B825AC800388576 /* DGCharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,16 +142,12 @@
 		67442C022B7D561200C40BED /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				67442C082B7D58A800C40BED /* LoginButton.swift */,
-				67442C042B7D584900C40BED /* LoginView.swift */,
-				67442C112B7E5FAB00C40BED /* PasswordTextField.swift */,
-				67442C132B7E5FB900C40BED /* EmailTextField.swift */,
-				67442C1C2B7F9CE200C40BED /* AccountDashboardView.swift */,
-				67442C202B7FDEE200C40BED /* CustomPieChartView.swift */,
+				6751251B2B82C17F00388576 /* AccountDashboardView */,
+				6751251A2B82C16800388576 /* LoginView */,
 				67442C222B80127F00C40BED /* AccountDetailView.swift */,
-				67442C262B80D82A00C40BED /* CollectionViewAccountListView.swift */,
-				67442C282B80E5D500C40BED /* CustomAccountCollectionViewCell.swift */,
 				67442C302B81587300C40BED /* GrowthChartView.swift */,
+				675125162B82BC5C00388576 /* AccountDetailCollectionView.swift */,
+				675125182B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +162,36 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		67442C3B2B82575300C40BED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6751251A2B82C16800388576 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				675124C82B82931200388576 /* LoginScrollView.swift */,
+				67442C082B7D58A800C40BED /* LoginButton.swift */,
+				67442C112B7E5FAB00C40BED /* PasswordTextField.swift */,
+				67442C132B7E5FB900C40BED /* EmailTextField.swift */,
+				675125142B82ABAB00388576 /* LoginView.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		6751251B2B82C17F00388576 /* AccountDashboardView */ = {
+			isa = PBXGroup;
+			children = (
+				67442C1C2B7F9CE200C40BED /* AccountDashboardView.swift */,
+				67442C202B7FDEE200C40BED /* CustomPieChartView.swift */,
+				67442C262B80D82A00C40BED /* CollectionViewAccountListView.swift */,
+				67442C282B80E5D500C40BED /* CustomAccountCollectionViewCell.swift */,
+			);
+			path = AccountDashboardView;
+			sourceTree = "<group>";
+		};
 		B2CA46BF279350880041B3A5 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +199,7 @@
 				B2CA46CA279350880041B3A5 /* MoneyBox */,
 				B2CA46E12793508A0041B3A5 /* MoneyBoxTests */,
 				B2CA46C9279350880041B3A5 /* Products */,
+				67442C3B2B82575300C40BED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,6 +265,7 @@
 				B2CA46C4279350880041B3A5 /* Sources */,
 				B2CA46C5279350880041B3A5 /* Frameworks */,
 				B2CA46C6279350880041B3A5 /* Resources */,
+				67442C3E2B82575300C40BED /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,9 +274,8 @@
 			name = MoneyBox;
 			packageProductDependencies = (
 				B26EF47728881E7F003BFDF2 /* Networking */,
-				67442C0D2B7D737100C40BED /* DGCharts */,
-				67442C0F2B7D737100C40BED /* DGChartsDynamic */,
-				67442C182B7EC0EF00C40BED /* Lottie */,
+				675124C42B825AC800388576 /* DGCharts */,
+				675124C62B825AC800388576 /* DGChartsDynamic */,
 			);
 			productName = MoneyBox;
 			productReference = B2CA46C8279350880041B3A5 /* MoneyBox.app */;
@@ -284,8 +328,7 @@
 			);
 			mainGroup = B2CA46BF279350880041B3A5;
 			packageReferences = (
-				67442C0C2B7D737100C40BED /* XCRemoteSwiftPackageReference "Charts" */,
-				67442C172B7EC0EF00C40BED /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = B2CA46C9279350880041B3A5 /* Products */;
 			projectDirPath = "";
@@ -325,18 +368,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				67442C092B7D58A800C40BED /* LoginButton.swift in Sources */,
+				675125172B82BC5C00388576 /* AccountDetailCollectionView.swift in Sources */,
 				67442C1D2B7F9CE200C40BED /* AccountDashboardView.swift in Sources */,
-				67442C052B7D584900C40BED /* LoginView.swift in Sources */,
 				67442C142B7E5FB900C40BED /* EmailTextField.swift in Sources */,
 				B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */,
 				67442C232B80127F00C40BED /* AccountDetailView.swift in Sources */,
 				67442C2F2B8121B900C40BED /* previous.swift in Sources */,
 				B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */,
+				675125192B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift in Sources */,
 				67442C212B7FDEE200C40BED /* CustomPieChartView.swift in Sources */,
 				67442C312B81587300C40BED /* GrowthChartView.swift in Sources */,
 				67442C122B7E5FAB00C40BED /* PasswordTextField.swift in Sources */,
 				67442C2D2B811F4700C40BED /* Operations.swift in Sources */,
 				67442C252B80129500C40BED /* AccountDetailViewController.swift in Sources */,
+				675125152B82ABAB00388576 /* LoginView.swift in Sources */,
+				675124C92B82931200388576 /* LoginScrollView.swift in Sources */,
 				67442C072B7D587C00C40BED /* Extensions.swift in Sources */,
 				67442C162B7EB9B900C40BED /* AccountsDashboardViewController.swift in Sources */,
 				67442C272B80D82A00C40BED /* CollectionViewAccountListView.swift in Sources */,
@@ -621,39 +667,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		67442C0C2B7D737100C40BED /* XCRemoteSwiftPackageReference "Charts" */ = {
+		675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		67442C172B7EC0EF00C40BED /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.4.0;
+				minimumVersion = 5.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		67442C0D2B7D737100C40BED /* DGCharts */ = {
+		675124C42B825AC800388576 /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 67442C0C2B7D737100C40BED /* XCRemoteSwiftPackageReference "Charts" */;
+			package = 675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGCharts;
 		};
-		67442C0F2B7D737100C40BED /* DGChartsDynamic */ = {
+		675124C62B825AC800388576 /* DGChartsDynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 67442C0C2B7D737100C40BED /* XCRemoteSwiftPackageReference "Charts" */;
+			package = 675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGChartsDynamic;
-		};
-		67442C182B7EC0EF00C40BED /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 67442C172B7EC0EF00C40BED /* XCRemoteSwiftPackageReference "lottie-spm" */;
-			productName = Lottie;
 		};
 		B26EF47728881E7F003BFDF2 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
