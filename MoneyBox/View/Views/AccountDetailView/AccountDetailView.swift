@@ -19,6 +19,7 @@ class AccountDetailView: UIScrollView {
     
     var collectionView: AccountDetailCollectionView = {
         let view = AccountDetailCollectionView()
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -27,6 +28,7 @@ class AccountDetailView: UIScrollView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .white
         self.showsHorizontalScrollIndicator = false
         self.showsVerticalScrollIndicator = false
         setupChart()

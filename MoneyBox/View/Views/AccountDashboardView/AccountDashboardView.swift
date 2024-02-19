@@ -39,7 +39,7 @@ class AccountDashboardView: UIScrollView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.backgroundColor = .clear
+        self.backgroundColor = .white
         // we'll stop showing the scroll indicator so that it doesn't cause confusion as we have a collection view in a scroll view
         self.showsHorizontalScrollIndicator = false
         self.showsVerticalScrollIndicator = false

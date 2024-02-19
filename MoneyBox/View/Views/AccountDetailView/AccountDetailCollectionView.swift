@@ -19,6 +19,7 @@ class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectio
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .white
         setupCollectionVew()
     }
     
@@ -30,6 +31,7 @@ class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectio
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: getCompositionalLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .white
         collectionView.register(CustomAccountDetailCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(collectionView)

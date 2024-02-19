@@ -34,6 +34,7 @@ class GrowthChartView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .white
         self.addSubview(lineChartView)
         setConstraints()
     }
@@ -98,7 +99,8 @@ class GrowthChartView: UIView {
         
         // customise x axis of chart
         lineChartView.xAxis.labelPosition = .bottom
-        lineChartView.xAxis.labelFont = (font?.withSize(10))!
+        lineChartView.xAxis.labelFont = font!.withSize(10)
+        lineChartView.xAxis.labelTextColor = .black
         lineChartView.xAxis.axisLineColor = .clear
         lineChartView.xAxis.drawGridLinesEnabled = false // true if you want X-Axis grid lines
         lineChartView.legend.enabled = true
@@ -109,7 +111,8 @@ class GrowthChartView: UIView {
         lineChartView.rightAxis.drawGridLinesEnabled = false // true if you want Y-Axis grid lines
         lineChartView.rightAxis.axisLineColor = .clear
         lineChartView.rightAxis.labelPosition = .outsideChart
-        lineChartView.rightAxis.labelFont = UIFont(name: "AvenirNext-Medium", size: 10)!
+        lineChartView.rightAxis.labelFont = font!.withSize(10)
+        lineChartView.rightAxis.labelTextColor = .black
         lineChartView.setScaleEnabled(true)
         
         let line1 = LineChartDataSet(entries: lineChartDataEntry, label: "Growth since inception") //Here we convert lineChartEntry to a LineChartDataSet

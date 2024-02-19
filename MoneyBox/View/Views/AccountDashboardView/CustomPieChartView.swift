@@ -89,6 +89,7 @@ class CustomPieChartView: UIView, ChartViewDelegate {
         chartData.dataSet?.valueFormatter = formatter
         // set the colour of the text labels that appear on the pie chart
         pieChart.data?.setValueTextColor(.black)
+        pieChart.legend.textColor = .black
     }
     
     func calculatePercentage(value: Double) -> Double {

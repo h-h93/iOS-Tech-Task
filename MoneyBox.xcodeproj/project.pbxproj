@@ -20,8 +20,6 @@
 		67442C292B80E5D500C40BED /* CustomAccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C282B80E5D500C40BED /* CustomAccountCollectionViewCell.swift */; };
 		67442C2D2B811F4700C40BED /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C2C2B811F4700C40BED /* Operations.swift */; };
 		67442C312B81587300C40BED /* GrowthChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C302B81587300C40BED /* GrowthChartView.swift */; };
-		675124C52B825AC800388576 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 675124C42B825AC800388576 /* DGCharts */; };
-		675124C72B825AC800388576 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 675124C62B825AC800388576 /* DGChartsDynamic */; };
 		675124C92B82931200388576 /* LoginScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675124C82B82931200388576 /* LoginScrollView.swift */; };
 		675125152B82ABAB00388576 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125142B82ABAB00388576 /* LoginView.swift */; };
 		675125172B82BC5C00388576 /* AccountDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125162B82BC5C00388576 /* AccountDetailCollectionView.swift */; };
@@ -29,6 +27,7 @@
 		6751251F2B8390B600388576 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6751251E2B8390B600388576 /* Lottie */; };
 		675125212B8390E600388576 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125202B8390E600388576 /* LoadingAnimationView.swift */; };
 		675125232B83941300388576 /* loadingHamster.json in Resources */ = {isa = PBXBuildFile; fileRef = 675125222B83941300388576 /* loadingHamster.json */; };
+		6796D44B2B83EBA9006D5DFF /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 6796D44A2B83EBA9006D5DFF /* DGCharts */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B228EA6C2880B30B00B35F16 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B228EA6A2880B30B00B35F16 /* Login.storyboard */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
@@ -53,13 +52,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		67442C3E2B82575300C40BED /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -102,9 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				675124C72B825AC800388576 /* DGChartsDynamic in Frameworks */,
 				B26EF47828881E7F003BFDF2 /* Networking in Frameworks */,
-				675124C52B825AC800388576 /* DGCharts in Frameworks */,
+				6796D44B2B83EBA9006D5DFF /* DGCharts in Frameworks */,
 				6751251F2B8390B600388576 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,9 +285,8 @@
 			name = MoneyBox;
 			packageProductDependencies = (
 				B26EF47728881E7F003BFDF2 /* Networking */,
-				675124C42B825AC800388576 /* DGCharts */,
-				675124C62B825AC800388576 /* DGChartsDynamic */,
 				6751251E2B8390B600388576 /* Lottie */,
+				6796D44A2B83EBA9006D5DFF /* DGCharts */,
 			);
 			productName = MoneyBox;
 			productReference = B2CA46C8279350880041B3A5 /* MoneyBox.app */;
@@ -342,8 +339,8 @@
 			);
 			mainGroup = B2CA46BF279350880041B3A5;
 			packageReferences = (
-				675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */,
 				6751251D2B8390B600388576 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				6796D4492B83EBA9006D5DFF /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = B2CA46C9279350880041B3A5 /* Products */;
 			projectDirPath = "";
@@ -562,6 +559,7 @@
 				DEVELOPMENT_TEAM = 68Z27E7S2D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoneyBox/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MoneyBox;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;
@@ -591,6 +589,7 @@
 				DEVELOPMENT_TEAM = 68Z27E7S2D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoneyBox/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MoneyBox;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Login;
@@ -617,15 +616,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7DM2UT7C8G;
+				DEVELOPMENT_TEAM = 68Z27E7S2D;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kara.MoneyBoxTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyBox.app/MoneyBox";
 			};
 			name = Debug;
@@ -637,15 +638,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7DM2UT7C8G;
+				DEVELOPMENT_TEAM = 68Z27E7S2D;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kara.MoneyBoxTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyBox.app/MoneyBox";
 			};
 			name = Release;
@@ -683,14 +686,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
-			};
-		};
 		6751251D2B8390B600388576 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
@@ -699,23 +694,26 @@
 				minimumVersion = 4.4.0;
 			};
 		};
+		6796D4492B83EBA9006D5DFF /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		675124C42B825AC800388576 /* DGCharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGCharts;
-		};
-		675124C62B825AC800388576 /* DGChartsDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = DGChartsDynamic;
-		};
 		6751251E2B8390B600388576 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6751251D2B8390B600388576 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		6796D44A2B83EBA9006D5DFF /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6796D4492B83EBA9006D5DFF /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 		B26EF47728881E7F003BFDF2 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
