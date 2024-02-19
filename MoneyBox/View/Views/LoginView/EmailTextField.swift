@@ -8,7 +8,7 @@
 import UIKit
 
 class EmailTextField: UITextField {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addBottomBorder()

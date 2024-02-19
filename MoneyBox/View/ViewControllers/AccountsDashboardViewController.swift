@@ -15,7 +15,7 @@ class AccountsDashboardViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -45,7 +45,7 @@ class AccountsDashboardViewController: UIViewController {
             accountDashboardView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             accountDashboardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-
+        
     }
     
     // stop the animation from playing
@@ -70,5 +70,5 @@ class AccountsDashboardViewController: UIViewController {
             scrollView.contentOffset.x = 0
         }
     }
-
+    
 }

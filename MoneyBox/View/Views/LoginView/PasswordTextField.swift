@@ -9,7 +9,7 @@ import UIKit
 
 class PasswordTextField: UITextField {
     let imageView = UIImageView(image: UIImage(systemName: "eye.slash"))
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         passwordTextFieldImageTapped()

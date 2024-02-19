@@ -23,7 +23,10 @@ class CustomPieChartView: UIView, ChartViewDelegate {
         return pie
     }()
     var account = [Account]()
+    
+    // create a colour scheme for our pie chart i have added 5 colours if you need more to represent more accounts then add more colours
     var colourPallete = [ChartColorTemplates.colorFromString("#2ad8ca").cgColor, ChartColorTemplates.colorFromString("#D8D2E1").cgColor, ChartColorTemplates.colorFromString("#F9DEC9").cgColor, ChartColorTemplates.colorFromString("#E9AFA3").cgColor, ChartColorTemplates.colorFromString("#685044").cgColor]
+    
     var accountData = [PieChartDataEntry]()
     var pieChartAccountColour = [UIColor]()
     
@@ -52,11 +55,11 @@ class CustomPieChartView: UIView, ChartViewDelegate {
     func setupPieChart() {
         // create our number formatter to transform our number into a presentable percentage
         let format = NumberFormatter()
-            format.numberStyle = .percent
-            format.maximumFractionDigits = 0
-            format.multiplier = 1.0
-            format.percentSymbol = "%"
-            format.zeroSymbol = ""
+        format.numberStyle = .percent
+        format.maximumFractionDigits = 0
+        format.multiplier = 1.0
+        format.percentSymbol = "%"
+        format.zeroSymbol = ""
         
         // grab the users account value so we can populate our pie chart
         for (index, value) in account.enumerated() {

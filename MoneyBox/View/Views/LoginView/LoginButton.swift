@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginButton: UIButton {
-
+    
     let activitySpinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView()
         spinner.style = .medium

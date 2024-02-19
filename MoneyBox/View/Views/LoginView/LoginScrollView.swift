@@ -77,7 +77,7 @@ class LoginScrollView: UIScrollView {
         return button
     }()
     //-------------------------------- end declare UI components ---------------------------------//
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -118,7 +118,7 @@ class LoginScrollView: UIScrollView {
             emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             emailTextField.heightAnchor.constraint(lessThanOrEqualToConstant: 80),
             emailTextField.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20),
-
+            
             passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 60),
             passwordLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             passwordLabel.heightAnchor.constraint(equalToConstant: 20),

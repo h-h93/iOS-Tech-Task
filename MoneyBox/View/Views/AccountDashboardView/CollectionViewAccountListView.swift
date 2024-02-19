@@ -16,7 +16,7 @@ class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollect
     
     // create a delegate so that we can navigate to the next view when user clicks on the account they wish to view within the collection view
     weak var delegate: AccountsDashboardViewController!
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCollectionVew()
@@ -56,7 +56,7 @@ class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollect
         //--------- Container Group ---------//
         let containerGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [group])
         let section = NSCollectionLayoutSection(group: containerGroup)
-            
+        
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout

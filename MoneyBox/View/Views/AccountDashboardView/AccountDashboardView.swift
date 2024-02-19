@@ -94,7 +94,7 @@ class AccountDashboardView: UIScrollView {
     
     // grab the users account data to display
     func getData() {
-        pieChart.accountData.removeAll()
+        pieChart.accountData.removeAll() // remove all current datapoints to redraw correctly
         operations.getAccountData { response, error in
             if error == nil {
                 self.accountRespone = response

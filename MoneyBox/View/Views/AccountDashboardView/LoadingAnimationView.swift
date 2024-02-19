@@ -25,16 +25,16 @@ class LoadingAnimationView: UIView {
         // 2. Start LottieAnimationView with animation name (without extension)
         animationView = .init(name: "loadingHamster")
         animationView!.translatesAutoresizingMaskIntoConstraints = false
-
+        
         // 3. Set animation content mode
         animationView!.contentMode = .scaleAspectFit
-         
+        
         // 4. Set animation loop mode
         animationView!.loopMode = .loop
-         
+        
         // 5. Adjust animation speed
         animationView!.animationSpeed = 0.5
-         
+        
         self.addSubview(animationView!)
         
         NSLayoutConstraint.activate([

@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-
+    
     
     // log the user into their account
     func loginUser() {
@@ -86,7 +86,6 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
         present(ac, animated: true)
     }
     
-    
     // navigate to users account view
     func displayAccountView() {
         let vc = AccountsDashboardViewController()
@@ -99,16 +98,16 @@ class LoginViewController: UIViewController, UIScrollViewDelegate {
     // adjust scrollview for keyboard
     @objc func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-
+        
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-
+        
         if notification.name == UIResponder.keyboardWillHideNotification {
             loginView.scrollView.contentInset = .zero
         } else {
             loginView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
         }
-
+        
         loginView.scrollView.scrollIndicatorInsets = loginView.scrollView.contentInset
     }
     

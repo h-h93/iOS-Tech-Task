@@ -57,11 +57,19 @@ class AccountDetailViewController: UIViewController, UIScrollViewDelegate {
                     // notify account dashboard we have successfully added money so reload data
                     NotificationCenter.default.post(name: Notification.Name("com.moneyAdded"), object: nil)
                 case .failure(let error):
-                    print("Unable to add money")
+                    // show error to user
+                    self.displayErrorToUser(error.localizedDescription)
                 }
             }
         }))
         
+        present(ac, animated: true)
+    }
+    
+    // display error message to user
+    func displayErrorToUser(_ errorString: String) {
+        let ac = UIAlertController(title: "Unable add money to acconut", message: errorString, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
     
@@ -71,5 +79,5 @@ class AccountDetailViewController: UIViewController, UIScrollViewDelegate {
             scrollView.contentOffset.x = 0
         }
     }
-
+    
 }

@@ -16,7 +16,7 @@ class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectio
     
     // create a delegate so we can notify the main view controller when the user adds money to the account
     weak var delegate: AccountDetailViewController!
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCollectionVew()
@@ -51,7 +51,7 @@ class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectio
         //--------- Container Group ---------//
         let containerGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [group])
         let section = NSCollectionLayoutSection(group: containerGroup)
-            
+        
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout
