@@ -7,11 +7,11 @@
 
 import UIKit
 import Networking
+import Lottie
 
 class AccountsDashboardViewController: UIViewController {
     let accountDashboardView: AccountDashboardView = {
         let view = AccountDashboardView()
-        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -19,29 +19,45 @@ class AccountsDashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        DispatchQueue.main.async {
+        
+        // set up dashboard view
+        setupAccountDashboardView()
+        
+        // let's listen out for when data is retrieved successfully
+        NotificationCenter.default.addObserver(self, selector: #selector(stopAnimation), name: NSNotification.Name("com.accountDataRetrieved"), object: nil)
+        
+        // let's listen out for when money is added so we can update our ui
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name:Notification.Name("com.moneyAdded"), object: nil)
+        // give a second or two delay before we present to counter the fact it will take sec to grab data
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.accountDashboardView.getData()
         }
-        setupView()
     }
     
-    func setupView() {
+    func setupAccountDashboardView() {
         view.addSubview(accountDashboardView)
         // assign our view controller to delegate so we can navigate to the next view
         accountDashboardView.collectionView.delegate = self
-        setConstraints()
-    }
-    
-    func setConstraints() {
+        
         NSLayoutConstraint.activate([
             accountDashboardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             accountDashboardView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             accountDashboardView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             accountDashboardView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+
     }
     
-    func showAccountDetailViewController(account: Account, product: ProductResponse) {
+    // stop the animation from playing
+    @objc func stopAnimation() {
+        accountDashboardView.stopAnimation()
+    }
+    
+    @objc func reloadData() {
+        accountDashboardView.getData()
+    }
+    
+    func showAccountDetailViewController(account: Account, product: ProductResponse, index: Int) {
         let vc = AccountDetailViewController()
         vc.account = account
         vc.product = product

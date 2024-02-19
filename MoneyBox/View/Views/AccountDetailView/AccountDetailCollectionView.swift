@@ -14,8 +14,8 @@ class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectio
     var account: Account!
     var product: ProductResponse!
     
-    // create a delegate so that we can navigate to the next view when user clicks on the account they wish to view within the collection view
-    weak var delegate: AccountsDashboardViewController!
+    // create a delegate so we can notify the main view controller when the user adds money to the account
+    weak var delegate: AccountDetailViewController!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +44,7 @@ class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectio
     // create a compositional layout horizontally taking up full width of screen with padding
     func getCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let topPanel = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        topPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        topPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20)
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [topPanel])
         
@@ -62,6 +62,8 @@ class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectio
         cell.accountNameLabel.text = "\(account.name!)"
         cell.planValueLabel.text = "Plan Value: £\(product.planValue!)"
         cell.moneyBoxAmountLabel.text = "Moneybox: £\(product.moneybox!)"
+        // add button action so we can let user top up account
+        cell.topUpButton.addTarget(self, action: #selector(topUpTapped), for: .touchUpInside)
         return cell
     }
     
@@ -71,5 +73,9 @@ class AccountDetailCollectionView: UIView, UICollectionViewDelegate, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+    }
+    
+    @objc func topUpTapped() {
+        delegate.addMoneyToAccount()
     }
 }

@@ -44,10 +44,10 @@ class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollect
     // create a compositional layout horizontally taking up full width of screen with padding
     func getCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let topPanel = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5)))
-        topPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        topPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
         
         let bottomPanel = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5)))
-        bottomPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        bottomPanel.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10)
         
         let topAndBottom = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [topPanel, bottomPanel])
         
@@ -77,6 +77,6 @@ class CollectionViewAccountListView: UIView, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate.showAccountDetailViewController(account: account[indexPath.item], product: productResponse[indexPath.item])
+        delegate.showAccountDetailViewController(account: account[indexPath.item], product: productResponse[indexPath.item], index: indexPath.item)
     }
 }

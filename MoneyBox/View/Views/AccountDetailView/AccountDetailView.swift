@@ -10,6 +10,7 @@ import DGCharts
 import Networking
 
 class AccountDetailView: UIScrollView {
+    lazy var operations = Operations()
     var lineChartView: GrowthChartView = {
         let chart = GrowthChartView()
         chart.translatesAutoresizingMaskIntoConstraints = false
@@ -22,12 +23,13 @@ class AccountDetailView: UIScrollView {
         return view
     }()
     
+    var index = 0
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.showsHorizontalScrollIndicator = false
         self.showsVerticalScrollIndicator = false
         setupChart()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -50,6 +52,24 @@ class AccountDetailView: UIScrollView {
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             collectionView.heightAnchor.constraint(equalToConstant: 200),
         ])
+    }
+    
+    // grab the users account data to display
+    func getData() {
+        operations.getAccountData { response, error in
+            if error == nil {
+                self.collectionView.account = response?.accounts![self.index]
+                self.collectionView.product = response?.productResponses![self.index]
+                self.lineChartView.account = response?.accounts![self.index]
+                self.lineChartView.product = response?.productResponses![self.index]
+                NotificationCenter.default.post(name: NSNotification.Name("com.accountDataRetrieved"), object: nil)
+                // update collectionView on main
+                DispatchQueue.main.async {
+                    self.collectionView.collectionView.reloadData()
+                    self.lineChartView.setupchartData()
+                }
+            }
+        }
     }
     
     

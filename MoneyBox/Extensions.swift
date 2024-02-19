@@ -10,7 +10,8 @@ import UIKit
 
 
 extension UIView {
-    func dropShadow(scale: Bool = true, shadowRadius: CGFloat = 10) {
+    // add a drop shadow (using rasterization for efficiency)
+    func dropShadow(scale: Bool = true, shadowRadius: CGFloat = 10, colour: CGColor = UIColor.black.cgColor) {
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.2
@@ -22,13 +23,14 @@ extension UIView {
 }
 
 extension UIColor {
+    // return a random colour
     static var random: UIColor {
         return UIColor(red: .random(in: 0.4...1), 
                        green: .random(in: 0.4...1),
                        blue: .random(in: 0.4...1),
                        alpha: 1)
     }
-    
+    // convert hex to rgb
     public convenience init?(hex: String) {
             let r, g, b, a: CGFloat
 
@@ -398,5 +400,18 @@ extension Date {
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
         return date
+    }
+}
+
+extension UIViewController {
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

@@ -16,6 +16,7 @@ class CustomPieChartView: UIView, ChartViewDelegate {
         pie.translatesAutoresizingMaskIntoConstraints = false
         pie.entryLabelFont = UIFont(name: "AvenirNext-Medium", size: 15)!
         pie.centerText = "Account"
+        pie.noDataText = "Loading"
         pie.rotationEnabled = true
         // animate our pie chart so it looks nicer and adds a bit of character to our app
         pie.animate(xAxisDuration: 5, yAxisDuration: 4)

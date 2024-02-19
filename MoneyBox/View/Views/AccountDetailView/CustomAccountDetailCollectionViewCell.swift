@@ -34,22 +34,17 @@ class CustomAccountDetailCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "sterlingsign.arrow.circlepath"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.isUserInteractionEnabled = true
-        return imageView
-    }()
-    
-    let topUpLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Add £10"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "AvenirNext-Medium", size: 15)
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = .black
-        return label
+    let topUpButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Add £10", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 4
+        let colour = UIColor(red: 42/255, green: 216/255, blue: 202/255, alpha: 1)
+        button.backgroundColor = colour
+        button.layer.borderWidth = 0.3
+        button.dropShadow(shadowRadius: 4)
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -67,36 +62,31 @@ class CustomAccountDetailCollectionViewCell: UICollectionViewCell {
     }
     
     func setupView() {
-        self.addSubview(imageView)
-        self.addSubview(topUpLabel)
+        self.addSubview(topUpButton)
         self.addSubview(accountNameLabel)
         self.addSubview(planValueLabel)
         self.addSubview(moneyBoxAmountLabel)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50),
             
-            topUpLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            topUpLabel.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
-            topUpLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            topUpLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            topUpButton.topAnchor.constraint(equalTo: self.bottomAnchor, constant: -40),
+            topUpButton.leadingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100),
+            topUpButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            topUpButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             
             accountNameLabel.topAnchor.constraint(equalTo: self.topAnchor),
             accountNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            accountNameLabel.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: -10),
+            accountNameLabel.trailingAnchor.constraint(equalTo: topUpButton.leadingAnchor, constant: -10),
             accountNameLabel.heightAnchor.constraint(equalToConstant: 50),
             
             planValueLabel.topAnchor.constraint(equalTo: accountNameLabel.bottomAnchor),
             planValueLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            planValueLabel.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: -10),
+            planValueLabel.trailingAnchor.constraint(equalTo: topUpButton.leadingAnchor, constant: -10),
             planValueLabel.heightAnchor.constraint(equalToConstant: 50),
             
             moneyBoxAmountLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor),
             moneyBoxAmountLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            moneyBoxAmountLabel.trailingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: -10),
+            moneyBoxAmountLabel.trailingAnchor.constraint(equalTo: topUpButton.leadingAnchor, constant: -10),
             moneyBoxAmountLabel.heightAnchor.constraint(equalToConstant: 50),
         ])
     }

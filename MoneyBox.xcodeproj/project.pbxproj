@@ -19,7 +19,6 @@
 		67442C272B80D82A00C40BED /* CollectionViewAccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C262B80D82A00C40BED /* CollectionViewAccountListView.swift */; };
 		67442C292B80E5D500C40BED /* CustomAccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C282B80E5D500C40BED /* CustomAccountCollectionViewCell.swift */; };
 		67442C2D2B811F4700C40BED /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C2C2B811F4700C40BED /* Operations.swift */; };
-		67442C2F2B8121B900C40BED /* previous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C2E2B8121B900C40BED /* previous.swift */; };
 		67442C312B81587300C40BED /* GrowthChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67442C302B81587300C40BED /* GrowthChartView.swift */; };
 		675124C52B825AC800388576 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 675124C42B825AC800388576 /* DGCharts */; };
 		675124C72B825AC800388576 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 675124C62B825AC800388576 /* DGChartsDynamic */; };
@@ -27,6 +26,9 @@
 		675125152B82ABAB00388576 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125142B82ABAB00388576 /* LoginView.swift */; };
 		675125172B82BC5C00388576 /* AccountDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125162B82BC5C00388576 /* AccountDetailCollectionView.swift */; };
 		675125192B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125182B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift */; };
+		6751251F2B8390B600388576 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6751251E2B8390B600388576 /* Lottie */; };
+		675125212B8390E600388576 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675125202B8390E600388576 /* LoadingAnimationView.swift */; };
+		675125232B83941300388576 /* loadingHamster.json in Resources */ = {isa = PBXBuildFile; fileRef = 675125222B83941300388576 /* loadingHamster.json */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B228EA6C2880B30B00B35F16 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B228EA6A2880B30B00B35F16 /* Login.storyboard */; };
 		B26EF47828881E7F003BFDF2 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = B26EF47728881E7F003BFDF2 /* Networking */; };
@@ -74,12 +76,13 @@
 		67442C262B80D82A00C40BED /* CollectionViewAccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAccountListView.swift; sourceTree = "<group>"; };
 		67442C282B80E5D500C40BED /* CustomAccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		67442C2C2B811F4700C40BED /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
-		67442C2E2B8121B900C40BED /* previous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previous.swift; sourceTree = "<group>"; };
 		67442C302B81587300C40BED /* GrowthChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthChartView.swift; sourceTree = "<group>"; };
 		675124C82B82931200388576 /* LoginScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScrollView.swift; sourceTree = "<group>"; };
 		675125142B82ABAB00388576 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		675125162B82BC5C00388576 /* AccountDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailCollectionView.swift; sourceTree = "<group>"; };
 		675125182B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAccountDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		675125202B8390E600388576 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		675125222B83941300388576 /* loadingHamster.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingHamster.json; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B228EA6A2880B30B00B35F16 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		B24EED92288ED5740016C233 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 				675124C72B825AC800388576 /* DGChartsDynamic in Frameworks */,
 				B26EF47828881E7F003BFDF2 /* Networking in Frameworks */,
 				675124C52B825AC800388576 /* DGCharts in Frameworks */,
+				6751251F2B8390B600388576 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,12 +146,9 @@
 		67442C022B7D561200C40BED /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6751251C2B837E1200388576 /* AccountDetailView */,
 				6751251B2B82C17F00388576 /* AccountDashboardView */,
 				6751251A2B82C16800388576 /* LoginView */,
-				67442C222B80127F00C40BED /* AccountDetailView.swift */,
-				67442C302B81587300C40BED /* GrowthChartView.swift */,
-				675125162B82BC5C00388576 /* AccountDetailCollectionView.swift */,
-				675125182B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,8 +189,20 @@
 				67442C202B7FDEE200C40BED /* CustomPieChartView.swift */,
 				67442C262B80D82A00C40BED /* CollectionViewAccountListView.swift */,
 				67442C282B80E5D500C40BED /* CustomAccountCollectionViewCell.swift */,
+				675125202B8390E600388576 /* LoadingAnimationView.swift */,
 			);
 			path = AccountDashboardView;
+			sourceTree = "<group>";
+		};
+		6751251C2B837E1200388576 /* AccountDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				67442C222B80127F00C40BED /* AccountDetailView.swift */,
+				67442C302B81587300C40BED /* GrowthChartView.swift */,
+				675125162B82BC5C00388576 /* AccountDetailCollectionView.swift */,
+				675125182B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift */,
+			);
+			path = AccountDetailView;
 			sourceTree = "<group>";
 		};
 		B2CA46BF279350880041B3A5 = {
@@ -219,12 +232,12 @@
 				67442C002B7D559E00C40BED /* ViewModel */,
 				67442C012B7D55AD00C40BED /* View */,
 				B228EA6A2880B30B00B35F16 /* Login.storyboard */,
+				675125222B83941300388576 /* loadingHamster.json */,
 				B2CA46CB279350880041B3A5 /* AppDelegate.swift */,
 				B2CA46D42793508A0041B3A5 /* Assets.xcassets */,
 				B2CA46D62793508A0041B3A5 /* LaunchScreen.storyboard */,
 				B2CA46D92793508A0041B3A5 /* Info.plist */,
 				67442C062B7D587C00C40BED /* Extensions.swift */,
-				67442C2E2B8121B900C40BED /* previous.swift */,
 			);
 			path = MoneyBox;
 			sourceTree = "<group>";
@@ -276,6 +289,7 @@
 				B26EF47728881E7F003BFDF2 /* Networking */,
 				675124C42B825AC800388576 /* DGCharts */,
 				675124C62B825AC800388576 /* DGChartsDynamic */,
+				6751251E2B8390B600388576 /* Lottie */,
 			);
 			productName = MoneyBox;
 			productReference = B2CA46C8279350880041B3A5 /* MoneyBox.app */;
@@ -329,6 +343,7 @@
 			mainGroup = B2CA46BF279350880041B3A5;
 			packageReferences = (
 				675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */,
+				6751251D2B8390B600388576 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = B2CA46C9279350880041B3A5 /* Products */;
 			projectDirPath = "";
@@ -346,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2CA46D82793508A0041B3A5 /* LaunchScreen.storyboard in Resources */,
+				675125232B83941300388576 /* loadingHamster.json in Resources */,
 				B2CA47712794D8E50041B3A5 /* LoginSucceed.json in Resources */,
 				B2CA46D52793508A0041B3A5 /* Assets.xcassets in Resources */,
 				B228EA6C2880B30B00B35F16 /* Login.storyboard in Resources */,
@@ -373,7 +389,7 @@
 				67442C142B7E5FB900C40BED /* EmailTextField.swift in Sources */,
 				B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */,
 				67442C232B80127F00C40BED /* AccountDetailView.swift in Sources */,
-				67442C2F2B8121B900C40BED /* previous.swift in Sources */,
+				675125212B8390E600388576 /* LoadingAnimationView.swift in Sources */,
 				B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */,
 				675125192B82BFDD00388576 /* CustomAccountDetailCollectionViewCell.swift in Sources */,
 				67442C212B7FDEE200C40BED /* CustomPieChartView.swift in Sources */,
@@ -675,6 +691,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		6751251D2B8390B600388576 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -687,6 +711,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 675124C32B825AC800388576 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGChartsDynamic;
+		};
+		6751251E2B8390B600388576 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6751251D2B8390B600388576 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 		B26EF47728881E7F003BFDF2 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;

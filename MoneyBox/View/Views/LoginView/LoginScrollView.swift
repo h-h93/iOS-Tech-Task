@@ -140,7 +140,7 @@ class LoginScrollView: UIScrollView {
             loginButton.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -100),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             
-            signUpLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 100),
+            signUpLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 90),
             signUpLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             signUpLabel.widthAnchor.constraint(equalToConstant: 250),
             signUpLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)

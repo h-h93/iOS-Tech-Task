@@ -14,6 +14,8 @@ class GrowthChartView: UIView {
     var lineChartView: LineChartView = {
         let chart = LineChartView()
         chart.translatesAutoresizingMaskIntoConstraints = false
+        chart.xAxis.axisMinimum = 0.0
+        chart.xAxis.granularity = 1.0
         chart.animate(xAxisDuration: 1, yAxisDuration: 2, easingOption: .easeInCirc)
         return chart
     }()
@@ -23,10 +25,12 @@ class GrowthChartView: UIView {
     var account: Account!
     var product: ProductResponse!
     
-    // track how many since account was created
+    // track how many years since account was created
     var year = [Int]()
     // caputre how much growth of account
     var money = [Int]()
+    
+    var font = UIFont(name: "AvenirNext-Medium", size: 10)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,7 +62,7 @@ class GrowthChartView: UIView {
         
         if #available(iOS 15, *) {
             //let fiveYearsAgoDate = Calendar.current.date(byAdding: .year, value: -5, to: Date())!
-            // work out how many years have passed since creation date of account
+            // work out how many years have passed since creation date of account if unable to then return "1" as we'd like to display a graph
             let s = form.string(from: creationDate, to: .now) ?? "1"
             let yearDiff = Int(s) ?? 1
             for i in 1...yearDiff {
@@ -79,12 +83,21 @@ class GrowthChartView: UIView {
         let initialDataPoint = ChartDataEntry(x: Double(0), y: (0))
         lineChartDataEntry.append(initialDataPoint)
             for i in year {
+                // I am unable to track or get info on yearly growth points i have set it to display growth since open
                 let dataPoint = ChartDataEntry(x: Double(i), y: Double(money.first!))
                 lineChartDataEntry.append(dataPoint)
             }
+        // uncomment the below to add in extra fake data points to see the line graph draw out more data this will show you how it would look if i was able to get yearly returns and map it to the grapth
+//        let extraDataPoint = ChartDataEntry(x: 2, y: (10000))
+//        let extraDataPoint2 = ChartDataEntry(x: 3, y: (30000))
+//        let extraDataPoint3 = ChartDataEntry(x: 4, y: (15000))
+//        lineChartDataEntry.append(extraDataPoint)
+//        lineChartDataEntry.append(extraDataPoint2)
+//        lineChartDataEntry.append(extraDataPoint3)
+        
         // customise x axis of chart
         lineChartView.xAxis.labelPosition = .bottom
-        lineChartView.xAxis.labelFont = UIFont(name: "AvenirNext-Medium", size: 15)!
+        lineChartView.xAxis.labelFont = (font?.withSize(10))!
         lineChartView.xAxis.axisLineColor = .clear
         lineChartView.xAxis.drawGridLinesEnabled = false // true if you want X-Axis grid lines
         lineChartView.legend.enabled = true
@@ -95,7 +108,7 @@ class GrowthChartView: UIView {
         lineChartView.rightAxis.drawGridLinesEnabled = false // true if you want Y-Axis grid lines
         lineChartView.rightAxis.axisLineColor = .clear
         lineChartView.rightAxis.labelPosition = .outsideChart
-        lineChartView.rightAxis.labelFont = UIFont(name: "AvenirNext-Medium", size: 15)!
+        lineChartView.rightAxis.labelFont = UIFont(name: "AvenirNext-Medium", size: 10)!
         lineChartView.setScaleEnabled(true)
         
         let line1 = LineChartDataSet(entries: lineChartDataEntry, label: "Growth since inception") //Here we convert lineChartEntry to a LineChartDataSet

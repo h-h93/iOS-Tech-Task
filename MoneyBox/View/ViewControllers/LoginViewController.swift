@@ -8,7 +8,7 @@
 import UIKit
 import Networking
 
-class LoginViewController: UIViewController{
+class LoginViewController: UIViewController, UIScrollViewDelegate {
     // Design Login
     let loginView: LoginView = {
         let view = LoginView()
@@ -20,6 +20,7 @@ class LoginViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         setupLoginView()
         
     }
@@ -27,6 +28,12 @@ class LoginViewController: UIViewController{
     func setupLoginView() {
         view.addSubview(loginView)
         loginView.delegate = self
+        loginView.scrollView.delegate = self
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
         NSLayoutConstraint.activate([
             loginView.topAnchor.constraint(equalTo: view.topAnchor),
             loginView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -62,10 +69,12 @@ class LoginViewController: UIViewController{
         
         operation.loginUser(email: email, password: password) { success, error in
             if success {
-                // display the next view
-                self.displayAccountView()
+                DispatchQueue.main.async {
+                    // display the next view
+                    self.displayAccountView()
+                }
             } else {
-                self.displayErrorToUser(error?.localizedDescription ?? "Error unable to sign in, Please contact us for assistance")
+                self.displayErrorToUser(error?.localizedDescription ?? "Error. Unable to sign in, please contact us for assistance")
             }
         }
     }
@@ -81,11 +90,26 @@ class LoginViewController: UIViewController{
     // navigate to users account view
     func displayAccountView() {
         let vc = AccountsDashboardViewController()
-        // let's get started on pulling in the account data so we can minimise any delays
         let rootNC = UINavigationController(rootViewController: vc)
         rootNC.modalPresentationStyle = .fullScreen
         rootNC.modalTransitionStyle = .flipHorizontal
         present(rootNC, animated: true)
+    }
+    
+    // adjust scrollview for keyboard
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            loginView.scrollView.contentInset = .zero
+        } else {
+            loginView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+
+        loginView.scrollView.scrollIndicatorInsets = loginView.scrollView.contentInset
     }
     
 }
